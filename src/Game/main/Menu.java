@@ -20,11 +20,14 @@ public class Menu extends MouseAdapter{
 	private Random r = new Random();
 	private boolean[] mouseDown = new boolean[2];
 	private Font MU;
+	private FontMetrics MU_SIZE;
+	private Font title;
+	private Font mainMenu;
 	
 	public Menu(Game game, Handler handler){
 		this.game = game;
 		this.handler = handler;
-		
+				
 		mouseDown[0] = true;
 		mouseDown[1] = false;
 	}
@@ -33,9 +36,9 @@ public class Menu extends MouseAdapter{
 		int mx = e.getX();
 		int my = e.getY();
 		
-		/*if(mouseDown[0] == true){
+		if(mouseDown[0] == true){
 			//PLAY BUTTON
-			if(mouseOver(mx, my, 200, 160, 300, 74)){
+			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.GAME;
 				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, handler));
 				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.BasicEnemy, Color.red, handler));
@@ -44,7 +47,7 @@ public class Menu extends MouseAdapter{
 			}	
 			
 			//INFO BUTTON
-			if(mouseOver(mx, my, 200, 260, 300, 74)){
+			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 3/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.INFO;
 				
 				mouseDown[0] = false;
@@ -52,8 +55,16 @@ public class Menu extends MouseAdapter{
 			}
 			
 			//EXTRA BUTTON
-			if(mouseOver(mx, my, 200, 360, 300, 74)){
+			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 4/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.EXTRA;
+				
+				mouseDown[0] = false;
+				mouseDown[1] = true;
+			}
+			
+			//EXIT BUTTON
+			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
+				System.exit(1);
 				
 				mouseDown[0] = false;
 				mouseDown[1] = true;
@@ -68,7 +79,7 @@ public class Menu extends MouseAdapter{
 				mouseDown[0] = true;
 				mouseDown[1] = false;
 			}
-		} */
+		}
 	}
 	
 	public void mouseReleased(MouseEvent e){
@@ -86,21 +97,22 @@ public class Menu extends MouseAdapter{
 	public void tick(){
 	}
 	
+	@SuppressWarnings("static-access")
 	public void render(Graphics g){
 		
-		try{
-			MU = MU.createFont(Font.TRUETYPE_FONT, new File("Mestizos Unidos.otf"));
-			}
-			catch(Exception e){
-			}
 		
 		if(game.gameState == STATE.MENU){
-			Font title = MU.deriveFont(Font.BOLD, 100);
-			Font mainMenu = MU.deriveFont(Font.PLAIN, 75);
 			
-			FontMetrics MU_SIZE = g.getFontMetrics(title);
+			try{
+				MU = MU.createFont(Font.TRUETYPE_FONT, new File("Mestizos Unidos.otf"));
+			}
+			catch(Exception e){}
 
 			g.setColor(Color.white);
+			title = MU.deriveFont(Font.BOLD, 100);
+			mainMenu = MU.deriveFont(Font.PLAIN, 75);
+			
+			MU_SIZE = g.getFontMetrics(title);
 			
 			g.setFont(title);
 			g.drawString("KYMA", Game.WIDTH/2 - MU_SIZE.stringWidth("KYMA") / 2, Game.HEIGHT/7);      //TITLE
