@@ -28,7 +28,8 @@ public class Game extends Canvas implements Runnable {
 		MENU,
 		INFO,
 		EXTRA,
-		GAME
+		GAME,
+		END
 	};
 	
 	public STATE gameState;
