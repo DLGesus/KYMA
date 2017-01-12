@@ -108,16 +108,18 @@ public class Menu extends MouseAdapter{
 			g.setFont(mainMenu);
 			MU_SIZE = g.getFontMetrics(mainMenu); 
 			
-			g.drawRect(Game.WIDTH/2 - (MU_SIZE.stringWidth("PLAY") / 2) - 40,  Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, MU_SIZE.stringWidth("PLAY") + 80, MU_SIZE.getHeight() + 20);       //PLAY
+			
+			
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);    //PLAY
 			g.drawString("PLAY", Game.WIDTH/2 - MU_SIZE.stringWidth("PLAY") / 2,  Game.HEIGHT * 2/6);
 			
-			g.drawRect(Game.WIDTH/2 - (MU_SIZE.stringWidth("INFO") / 2) - 40,  Game.HEIGHT * 3/6 - (MU_SIZE.getHeight() / 2) - 40, MU_SIZE.stringWidth("INFO") + 80, MU_SIZE.getHeight() + 20);       //INFO
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 3/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);       //INFO
 			g.drawString("INFO", Game.WIDTH/2 - MU_SIZE.stringWidth("INFO") / 2,  Game.HEIGHT * 3/6);
 			
-			g.drawRect(Game.WIDTH/2 - (MU_SIZE.stringWidth("EXTRA") / 2) - 40,  Game.HEIGHT * 4/6 - (MU_SIZE.getHeight() / 2) - 40, MU_SIZE.stringWidth("EXTRA") + 80, MU_SIZE.getHeight() + 20);       //EXTRA
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 4/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);       //EXTRA
 			g.drawString("EXTRA", Game.WIDTH/2 - MU_SIZE.stringWidth("EXTRA") / 2,  Game.HEIGHT * 4/6);
 			
-			g.drawRect(Game.WIDTH/2 - (MU_SIZE.stringWidth("EXIT") / 2) - 40,  Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, MU_SIZE.stringWidth("EXIT") + 80, MU_SIZE.getHeight() + 20);
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);
 			g.drawString("EXIT", Game.WIDTH/2 - MU_SIZE.stringWidth("EXIT") / 2,  Game.HEIGHT * 5/6);
 		}
 		
