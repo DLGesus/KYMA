@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
 		
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
-		new Window(WIDTH, HEIGHT, "Kyma 1.0.0", this);
+		new Window(WIDTH, HEIGHT, "Kyma 1.1.0", this);
 		
 		hud = new HUD();
 		spawner = new Spawn(handler, hud);
