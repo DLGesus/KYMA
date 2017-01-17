@@ -1,0 +1,11 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 119 ciObject found
+instanceKlass java/lang/Throwable$PrintStreamOrWriter
+instanceKlass sun/font/T2KFontScaler$2
+instanceKlass sun/awt/ModalExclude
+instanceKlass javax/swing/KeyboardManager
+instanceKlass javax/swing/JComponent$IntVector
+instanceKlass javax/swing/JComponent$KeyboardState
+instanceKlass java/awt/KeyboardFocusManager$5

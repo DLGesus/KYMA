@@ -17,7 +17,7 @@ public class BasicBullet extends GameObject{
 		this.handler = handler;
 		this.color = color;
 		
-		velX = (r.nextInt(5 - -5) + -5);
+		velX = (r.nextInt(7 - -7) + -7);
 		velY = 7;
 	}
 	

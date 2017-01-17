@@ -30,7 +30,7 @@ public class HUD {
 		catch(Exception e){}
 		
 		g.setColor(Color.gray);
-		g.fillRect(15, 15, 200, 32);
+		g.fillRect(15, 15, 300, 32);
 		
 		g.setColor(new Color(75, (int)greenValue, 0));
 		g.fillRect(15, 15, (int)HEALTH * 3, 32);
