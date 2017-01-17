@@ -32,8 +32,8 @@ public class SmartEnemy extends GameObject{
 		float diffY = y - Player.getY();
 		float distance = (float)(Math.sqrt((diffX * diffX) + (diffY * diffY)));  //Pythagorean Theorem
 		
-		velX = (float)((-1.2/distance) * (diffX - 8));
-		velY = (float)((-1.2/distance) * (diffY - 8));
+		velX = (float)((-1.5/distance) * (diffX - 8));
+		velY = (float)((-1.5/distance) * (diffY - 8));
 		
 		//if(y <= 0 || y >= Game.HEIGHT - 42) velY *= -1;
 		//if(x <= 0 || x >= Game.WIDTH - 20) velX *= -1;
