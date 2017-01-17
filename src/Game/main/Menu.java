@@ -27,7 +27,7 @@ public class Menu extends MouseAdapter{
 	public Menu(Game game, Handler handler){
 		this.game = game;
 		this.handler = handler;
-				
+		
 		mouseDown[0] = true;
 		mouseDown[1] = false;
 	}
@@ -73,7 +73,7 @@ public class Menu extends MouseAdapter{
 		
 		//BACK BUTTONS
 		else if(mouseDown[1] == true){
-			if(mouseOver(mx, my, 200, 400, 300, 74)){
+			if(mouseOver(mx, my, Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.MENU;
 				
 				mouseDown[0] = true;
@@ -136,21 +136,31 @@ public class Menu extends MouseAdapter{
 		}
 		
 		if(game.gameState == STATE.INFO){
-			Font fnt = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 70);
-			Font fnt2 = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 50);
-			Font fnt3 = new Font("Papyrus", 1, 18);
-			Font fnt4 = new Font("aaronfaces", 1, 60);
+			
+			try{
+				MU = MU.createFont(Font.TRUETYPE_FONT, new File("Mestizos Unidos.otf"));
+			}
+			catch(Exception e){}
+			
+			//Font fnt = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 70);
+			Font fnt = MU.deriveFont(Font.PLAIN, 85);
+			//Font fnt2 = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 50);
+			Font fnt2 = new Font("Papyrus", 1, 25);
+			
 			g.setColor(Color.white);
 			
+			MU_SIZE = g.getFontMetrics(fnt);
 			g.setFont(fnt);
-			g.drawString("INFO", 270, 110);      //INFO
+			//g.drawString("INFO", 270, 110);      //INFO
+			g.drawString("INFO", Game.WIDTH/2 - MU_SIZE.stringWidth("INFO") / 2, Game.HEIGHT/7);
 			
-			g.setFont(fnt2);
-			g.drawRect(200, 400, 300, 74);       //BACK
-			g.drawString("BACK", 283, 455);
+			MU_SIZE = g.getFontMetrics(mainMenu);      //BACK
+			g.setFont(mainMenu);
+			g.drawRect(Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20);
+			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
 			
 			//INSTRUCTIONS & INFO TEXT
-			g.setFont(fnt3);
+			g.setFont(fnt2);
 			g.drawString("Use the WASD keys to move the player and evade all enemies", 60, 175);
 			g.drawString("Each bullet trail does no damage, only the bullet point", 60, 205);
 			g.drawString("Every 10th wave has a unique STAGE BOSS", 60, 235);
@@ -158,23 +168,30 @@ public class Menu extends MouseAdapter{
 			g.drawString("The final wave is wave 100", 60, 295);
 			g.drawString("Have Fun!", 200, 365);
 			
+			try{
+				MU = MU.createFont(Font.TRUETYPE_FONT, new File("aaron.ttf"));
+			}
+			catch(Exception e){}
+			
+			//Font fnt4 = new Font("aaronfaces", 1, 60);
+			Font fnt3 = MU.deriveFont(Font.PLAIN, 60);
+			
 			//EMOJI
 			g.setColor(Color.yellow);
-			g.setFont(fnt4);
-			g.drawString("flx", 310, 385);
+			g.setFont(fnt3);
+			g.drawString("flx", 340, 385);
 		}
 		
 		if(game.gameState == STATE.EXTRA){
-			Font fnt = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 70);
-			Font fnt2 = new Font("MESTIZOS UNIDOS -URBAN HOOKUPZ", 1, 50);
+			Font fnt = MU.deriveFont(Font.PLAIN, 85);
 			g.setColor(Color.white);
 			
 			g.setFont(fnt);
-			g.drawString("EXTRA", 240, 110);      //EXTRA
+			g.drawString("EXTRA", Game.WIDTH/2 - MU_SIZE.stringWidth("EXTRA") / 2, Game.HEIGHT/7);      //EXTRA
 			
-			g.setFont(fnt2);
-			g.drawRect(200, 400, 300, 74);        //BACK
-			g.drawString("BACK", 283, 455);
+			g.setFont(mainMenu);
+			g.drawRect(Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20);     // BACK
+			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
 		}
 	}
 }
