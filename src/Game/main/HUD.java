@@ -24,12 +24,12 @@ public class HUD {
 		g.fillRect(15, 15, 200, 32);
 		
 		g.setColor(new Color(75, (int)greenValue, 0));
-		g.fillRect(15, 15, (int)HEALTH * 2, 32);
+		g.fillRect(15, 15, (int)HEALTH * 3, 32);
 		
 		g.setColor(Color.white);
-		g.drawRect(15, 15, 200, 32);
+		g.drawRect(15, 15, 300, 32);
 		
-		Font fnt = new Font("Justo St", Font.PLAIN, 10);
+		Font fnt = new Font("Justo St", Font.PLAIN, 13);
 		g.setFont(fnt);
 		
 		g.drawString("Score: " + score, 18, 64);
