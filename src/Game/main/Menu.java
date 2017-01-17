@@ -40,7 +40,7 @@ public class Menu extends MouseAdapter{
 			//PLAY BUTTON
 			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.GAME;
-				handler.addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, handler));
+				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
 				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.BasicEnemy, Color.red, handler));
 				
 				mouseDown[0] = false;

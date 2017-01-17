@@ -16,15 +16,15 @@ public class Player extends GameObject{
 	}
 	
 	public Rectangle getBounds(){
-		return new Rectangle((int)x, (int)y, 32, 32);
+		return new Rectangle((int)x, (int)y, 40, 40);
 	}
 	
 	public void tick(){
 		x += velX;
 		y += velY;
 		
-		x = Game.clamp(x, 0, Game.WIDTH - 38);
-		y = Game.clamp(y, 0, Game.HEIGHT - 60);
+		x = Game.clamp(x, 0, Game.WIDTH - 46);
+		y = Game.clamp(y, 0, Game.HEIGHT - 68);
 		
 		collision();
 	}
@@ -45,6 +45,6 @@ public class Player extends GameObject{
 	
 	public void render(Graphics g){
 		g.setColor(Color.white);          /*if(id == ID.Player)*/ 
-		g.fillRect((int)x, (int)y, 32, 32);
+		g.fillRect((int)x, (int)y, 40, 40);
 	}
 }
