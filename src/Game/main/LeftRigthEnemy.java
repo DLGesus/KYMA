@@ -15,7 +15,7 @@ public class LeftRigthEnemy extends GameObject{
 		this.handler = handler;
 		this.color = color;
 		
-		velX = 5;
+		velX = 7;
 	}
 	
 	public Rectangle getBounds(){

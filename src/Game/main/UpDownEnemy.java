@@ -15,7 +15,7 @@ public class UpDownEnemy extends GameObject{
 		this.handler = handler;
 		this.color = color;
 		
-		velY = 5;
+		velY = 7;
 	}
 	
 	public Rectangle getBounds(){

@@ -36,14 +36,14 @@ public class EnemyBoss1 extends GameObject{
 		if(timer <= 0 )timer2--;
 		
 		if(timer2 <= 0){
-			if(velX == 0) velX = -1;
+			if(velX == 0) velX = -4;
 			
 			if(velX < 0) velX -= 0.006f;
 			else if(velX > 0) velX += 0.006f;
 			
-			velX = Game.clamp(velX, -10, 10);
+			velX = Game.clamp(velX, -15, 15);
 			
-			int spawn = r.nextInt(8);
+			int spawn = r.nextInt(7);
 			if(spawn == 0) handler.addObject(new BasicBullet(x + 40, y + 115, ID.BasicEnemy, Color.red, handler));
 			}
 			

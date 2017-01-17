@@ -15,8 +15,8 @@ public class BasicEnemy extends GameObject{
 		this.handler = handler;
 		this.color = color;
 		
-		velX = 5;
-		velY = 5;
+		velX = 6;
+		velY = 6;
 	}
 	
 	public Rectangle getBounds(){

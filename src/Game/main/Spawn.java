@@ -63,7 +63,7 @@ public class Spawn {
 				handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.SmartEnemy, Color.lightGray, handler));                               //SmartEnemy
 			}
 			
-			if(scoreKeep == 4350){
+			if(scoreKeep == 4500){
 				hud.setWave(10);  
 				handler.clearEnemies();
 				handler.addObject(new EnemyBoss1(Game.WIDTH / 2 + 38, -155, ID.EnemyBoss1, handler));                                                                              //EnemyBoss1

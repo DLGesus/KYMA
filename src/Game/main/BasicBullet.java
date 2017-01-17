@@ -18,7 +18,7 @@ public class BasicBullet extends GameObject{
 		this.color = color;
 		
 		velX = (r.nextInt(5 - -5) + -5);
-		velY = 5;
+		velY = 7;
 	}
 	
 	public Rectangle getBounds(){
