@@ -99,8 +99,6 @@ public class Menu extends MouseAdapter{
 	
 	@SuppressWarnings("static-access")
 	public void render(Graphics g){
-		
-		
 		if(game.gameState == STATE.MENU){
 			
 			try{
