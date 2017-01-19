@@ -44,7 +44,7 @@ public class EnemyBoss1 extends GameObject{
 			velX = Game.clamp(velX, -15, 15);
 			
 			int spawn = r.nextInt(7);
-			if(spawn == 0) handler.addObject(new BasicBullet(x + 40, y + 115, ID.BasicEnemy, Color.red, handler));
+			if(spawn == 0) handler.addObject(new BasicBullet(x + 40, y + 115, ID.Enemy, Color.red, handler));
 			}
 			
 		//if(y <= 0 || y >= Game.HEIGHT - 42) velY *= -1;
@@ -68,5 +68,5 @@ public class EnemyBoss1 extends GameObject{
 		g.fillRect((int)x + 35, (int)y + 74, 25, 40);
 	}
 
-	//handler.addObject(new EnemyBoss1(Game.WIDTH / 2 + 38, -155, ID.EnemyBoss1, handler));
+	//handler.addObject(new EnemyBoss1(Game.WIDTH / 2 + 38, -155, ID.Enemy, handler));
 }

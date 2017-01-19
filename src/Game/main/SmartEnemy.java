@@ -46,5 +46,5 @@ public class SmartEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.SmartEnemy, Color.lightGray, handler));
+	//handler.addObject(new SmartEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.lightGray, handler));
 }

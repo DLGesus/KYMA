@@ -38,5 +38,5 @@ public class HorizontallyFastEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//handler.addObject(new HorizontallyFastEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.HorizontallyFastEnemy, Color.green, handler));
+	//handler.addObject(new HorizontallyFastEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.green, handler));
 }

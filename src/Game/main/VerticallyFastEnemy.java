@@ -38,5 +38,5 @@ public class VerticallyFastEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//handler.addObject(new VerticallyFastEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.VerticallyFastEnemy, Color.cyan, handler));
+	//handler.addObject(new VerticallyFastEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.cyan, handler));
 }

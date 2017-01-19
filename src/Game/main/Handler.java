@@ -37,7 +37,7 @@ public class Handler {
 			
 			if(tempObject.id == ID.Player){
 				object.clear();
-				addObject(new Player(Game.WIDTH/2-32, Game.HEIGHT/2-32, ID.Player, this));
+				addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, this));
 			}
 		}
 	}

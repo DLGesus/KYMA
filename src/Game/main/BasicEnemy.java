@@ -38,5 +38,5 @@ public class BasicEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.BasicEnemy, Color.red, handler));
+	//handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.red, handler));
 }

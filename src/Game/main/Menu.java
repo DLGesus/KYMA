@@ -24,6 +24,8 @@ public class Menu extends MouseAdapter{
 	private Font title;
 	private Font mainMenu;
 	
+	private int counter = 0;
+	
 	public Menu(Game game, Handler handler){
 		this.game = game;
 		this.handler = handler;
@@ -41,10 +43,10 @@ public class Menu extends MouseAdapter{
 			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.GAME;
 				
-				Game.FPStrace = 0;
+				Game.FPStrace = 1;
 				
 				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.BasicEnemy, Color.red, handler));
+				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.red, handler));
 				mouseDown[0] = false;
 			}	
 			
@@ -102,6 +104,12 @@ public class Menu extends MouseAdapter{
 	@SuppressWarnings("static-access")
 	public void render(Graphics g){
 		if(game.gameState == STATE.MENU){
+			
+			while(counter == 0){
+				ParticleEffect particle = new ParticleEffect();
+				particle.ParticleEffect();	
+				counter = 1;
+			}
 			
 			try{
 				MU = MU.createFont(Font.TRUETYPE_FONT, new File("Mestizos Unidos.otf"));

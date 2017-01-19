@@ -36,6 +36,6 @@ public class UpDownEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//Left:  handler.addObject(new UpDownEnemy(0, r.nextInt(Game.HEIGHT - 45), ID.UpDownEnemy, Color.orange, handler));
-	//Right: handler.addObject(new UpDownEnemy(Game.WIDTH - 22, r.nextInt(Game.HEIGHT - 45), ID.UpDownEnemy, Color.orange, handler));
+	//Left:  handler.addObject(new UpDownEnemy(0, r.nextInt(Game.HEIGHT - 45), ID.Enemy, Color.orange, handler));
+	//Right: handler.addObject(new UpDownEnemy(Game.WIDTH - 22, r.nextInt(Game.HEIGHT - 45), ID.Enemy, Color.orange, handler));
 }

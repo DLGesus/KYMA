@@ -36,6 +36,6 @@ public class LeftRigthEnemy extends GameObject{
 		g.fillRect((int)x, (int)y, 16, 16);
 	}
 
-	//BOTOM: handler.addObject(new LeftRigthEnemy(r.nextInt(Game.WIDTH - 22), Game.HEIGHT - 44, ID.LeftRigthEnemy, Color.orange, handler));
-	//TOP:   handler.addObject(new LeftRigthEnemy(r.nextInt(Game.WIDTH - 22), 0, ID.LeftRigthEnemy, Color.orange, handler));
+	//BOTOM: handler.addObject(new LeftRigthEnemy(r.nextInt(Game.WIDTH - 22), Game.HEIGHT - 44, ID.Enemy, Color.orange, handler));
+	//TOP:   handler.addObject(new LeftRigthEnemy(r.nextInt(Game.WIDTH - 22), 0, ID.Enemy, Color.orange, handler));
 }
