@@ -47,7 +47,9 @@ public class Menu extends MouseAdapter{
 				
 				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
 				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.red, handler));
+				
 				mouseDown[0] = false;
+				mouseDown[1] = true;
 			}	
 			
 			//INFO BUTTON
@@ -78,7 +80,11 @@ public class Menu extends MouseAdapter{
 		//BACK BUTTONS
 		else if(mouseDown[1] == true){
 			if(mouseOver(mx, my, Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20)){
-				game.gameState = STATE.MENU;
+				if(game.gameState == STATE.END){
+					Game.gameOver = true;
+				}else{
+					game.gameState = STATE.MENU;
+				}
 				
 				mouseDown[0] = true;
 				mouseDown[1] = false;
@@ -197,6 +203,17 @@ public class Menu extends MouseAdapter{
 			
 			g.setFont(mainMenu);
 			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);     // BACK
+			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
+		}
+		
+		if(game.gameState == STATE.END){
+			handler.clear();
+			
+			g.setColor(Color.WHITE);
+			
+			MU_SIZE = g.getFontMetrics(mainMenu);
+			g.setFont(mainMenu);
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);
 			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
 		}
 	}

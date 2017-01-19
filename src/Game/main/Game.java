@@ -13,6 +13,7 @@ public class Game extends Canvas implements Runnable {
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = WIDTH / 12 * 9;
 	public static int FPStrace = 20; // Modify to modify FPS
+	public static boolean gameOver = false;
 	
 	private Thread thread;
 	private boolean running = false;
@@ -36,13 +37,20 @@ public class Game extends Canvas implements Runnable {
 	public STATE gameState;
 	
 	public Game(){
+		
+		inGame();
+		new Window(WIDTH, HEIGHT, "Kyma 1.5.0", this);
+		gameState = STATE.MENU;
+	}
+	
+	public void inGame(){
+		gameOver = false;
 		handler = new Handler();
 		menu = new Menu(this, handler);
-		gameState = STATE.MENU;
 		
 		this.addKeyListener(new KeyInput(handler));
 		this.addMouseListener(menu);
-		new Window(WIDTH, HEIGHT, "Kyma 1.5.0", this);
+		
 		
 		hud = new HUD();
 		spawner = new Spawn(handler, hud);
@@ -102,11 +110,20 @@ public class Game extends Canvas implements Runnable {
 	private void tick(){
 		handler.tick();
 		
-		if(gameState == STATE.MENU) menu.tick();
+		if(gameState == STATE.END){
+			if(gameOver){
+				inGame();
+				gameState = STATE.MENU;
+			}
+		}
+		
+		if(gameState == STATE.MENU || gameState == STATE.END) menu.tick();
 		
 		else if(gameState == STATE.GAME){
-			hud.tick();
 			spawner.tick();
+			if(hud.tick()){
+				gameState = STATE.END;
+			}
 		}
 	}
 	
@@ -124,7 +141,7 @@ public class Game extends Canvas implements Runnable {
 		
 		handler.render(g);
 		
-		if(gameState == STATE.MENU || gameState == STATE.INFO || gameState == STATE.EXTRA){
+		if(gameState == STATE.MENU || gameState == STATE.INFO || gameState == STATE.EXTRA || gameState == STATE.END){
 			menu.render(g);
 		}
 		if(gameState == STATE.GAME) hud.render(g);	

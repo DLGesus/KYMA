@@ -15,11 +15,16 @@ public class HUD {
 	private Font J;
 	private Font INFO;
 	
-	public void tick(){
+	public boolean tick(){
 		HEALTH = Game.clamp(HEALTH, 0, 100);
 		greenValue = Game.clamp(greenValue, 0, 255);
 		greenValue = HEALTH * 2;
 		score++;
+		if(HEALTH == 0){
+			HEALTH = 100;
+			return true;
+		}
+		return false;
 	}
 	
 	public void render(Graphics g){
