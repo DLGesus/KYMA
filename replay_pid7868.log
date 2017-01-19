@@ -1,0 +1,29 @@
+JvmtiExport can_access_local_variables 1
+JvmtiExport can_hotswap_or_post_breakpoint 1
+JvmtiExport can_post_on_exceptions 1
+# 118 ciObject found
+instanceKlass sun/font/T2KFontScaler$2
+instanceKlass sun/font/StrikeCache$2
+instanceKlass sun/font/SunFontManager$4
+instanceKlass java/util/concurrent/ConcurrentHashMap$Traverser
+instanceKlass sun/font/SunFontManager$FamilyDescription
+instanceKlass java/io/RandomAccessFile$1
+instanceKlass sun/reflect/ClassDefiner$1
+instanceKlass sun/reflect/ClassDefiner
+instanceKlass sun/reflect/MethodAccessorGenerator$1
+instanceKlass sun/reflect/Label$PatchInfo
+instanceKlass sun/reflect/Label
+instanceKlass sun/reflect/UTF8
+instanceKlass sun/reflect/ClassFileAssembler
+instanceKlass sun/reflect/ByteVectorImpl
+instanceKlass sun/reflect/ByteVector
+instanceKlass sun/reflect/ByteVectorFactory
+instanceKlass sun/reflect/AccessorGenerator
+instanceKlass sun/reflect/ClassFileConstants
+instanceKlass java/awt/AWTEvent$2
+instanceKlass java/awt/Cursor$CursorDisposer
+instanceKlass sun/java2d/loops/FontInfo
+instanceKlass sun/font/StrikeCache$DisposableStrike
+instanceKlass sun/font/FontStrikeDisposer
+instanceKlass sun/java2d/Disposer$PollDisposable
+instanceKlass java/text/AttributedString$AttributedStringIterator

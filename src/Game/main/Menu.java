@@ -40,9 +40,9 @@ public class Menu extends MouseAdapter{
 			//PLAY BUTTON
 			if(mouseOver(mx, my, Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20)){
 				game.gameState = STATE.GAME;
+				
 				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
 				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.BasicEnemy, Color.red, handler));
-				
 				mouseDown[0] = false;
 			}	
 			
@@ -118,8 +118,6 @@ public class Menu extends MouseAdapter{
 			g.setFont(mainMenu);
 			MU_SIZE = g.getFontMetrics(mainMenu); 
 			
-			
-			
 			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 2/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);    //PLAY
 			g.drawString("PLAY", Game.WIDTH/2 - MU_SIZE.stringWidth("PLAY") / 2,  Game.HEIGHT * 2/6);
 			
@@ -154,7 +152,7 @@ public class Menu extends MouseAdapter{
 			
 			MU_SIZE = g.getFontMetrics(mainMenu);      //BACK
 			g.setFont(mainMenu);
-			g.drawRect(Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20);
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);
 			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
 			
 			//INSTRUCTIONS & INFO TEXT
@@ -164,7 +162,7 @@ public class Menu extends MouseAdapter{
 			g.drawString("Every 10th wave has a unique STAGE BOSS", 60, 235);
 			g.drawString("Once you defeat a boss, a checkpoint will appear", 60, 265);
 			g.drawString("The final wave is wave 100", 60, 295);
-			g.drawString("Have Fun!", 200, 365);
+			g.drawString("Have Fun!", 340, 495);
 			
 			try{
 				MU = MU.createFont(Font.TRUETYPE_FONT, new File("aaron.ttf"));
@@ -177,7 +175,7 @@ public class Menu extends MouseAdapter{
 			//EMOJI
 			g.setColor(Color.yellow);
 			g.setFont(fnt3);
-			g.drawString("flx", 340, 385);
+			g.drawString("flx", 480, 515);
 		}
 		
 		if(game.gameState == STATE.EXTRA){
@@ -188,7 +186,7 @@ public class Menu extends MouseAdapter{
 			g.drawString("EXTRA", Game.WIDTH/2 - MU_SIZE.stringWidth("EXTRA") / 2, Game.HEIGHT/7);      //EXTRA
 			
 			g.setFont(mainMenu);
-			g.drawRect(Game.WIDTH/3, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH / 3, MU_SIZE.getHeight() + 20);     // BACK
+			g.drawRect(Game.WIDTH/4, Game.HEIGHT * 5/6 - (MU_SIZE.getHeight() / 2) - 40, Game.WIDTH * 3 / 4 - Game.WIDTH/4 , MU_SIZE.getHeight() + 20);     // BACK
 			g.drawString("BACK", Game.WIDTH/2 - MU_SIZE.stringWidth("BACK") / 2,  Game.HEIGHT * 5/6);
 		}
 	}

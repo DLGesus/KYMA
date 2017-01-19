@@ -12,6 +12,7 @@ public class Game extends Canvas implements Runnable {
 	
 	public static final int WIDTH = 1000;
 	public static final int HEIGHT = WIDTH / 12 * 9;
+	public static final int FPStrace = 20; // Modify to modify FPS
 	
 	private Thread thread;
 	private boolean running = false;
@@ -88,6 +89,11 @@ public class Game extends Canvas implements Runnable {
 				 timer += 1000;
 				 System.out.println("FPS: " + frames);
 				 frames = 0;
+			 }
+			 try{
+				 Thread.sleep(FPStrace);
+			 }catch(Exception e){
+				 e.printStackTrace();
 			 }
 		 }
 		 stop();
