@@ -31,7 +31,9 @@ public class Game extends Canvas implements Runnable {
 		INFO,
 		EXTRA,
 		END,
-		GAME
+		GAME,
+		PAUSE,
+		REVERSEHIDE
 	};
 	
 	public STATE gameState;
@@ -47,14 +49,12 @@ public class Game extends Canvas implements Runnable {
 		gameOver = false;
 		handler = new Handler();
 		menu = new Menu(this, handler);
-		
-		this.addKeyListener(new KeyInput(handler));
-		this.addMouseListener(menu);
-		
-		
-		hud = new HUD();
+		hud = new HUD(this, handler);
 		spawner = new Spawn(handler, hud);
 		r = new Random();
+		
+		this.addKeyListener(new KeyInput(this, handler));
+		this.addMouseListener(menu);
 	}
 
 	public synchronized void start(){
@@ -108,7 +108,6 @@ public class Game extends Canvas implements Runnable {
 	}
 	
 	private void tick(){
-		handler.tick();
 		
 		if(gameState == STATE.END){
 			if(gameOver){
@@ -117,13 +116,17 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 		
-		if(gameState == STATE.MENU || gameState == STATE.END) menu.tick();
+		if(gameState == STATE.MENU || gameState == STATE.END || gameState == STATE.PAUSE) menu.tick();
 		
 		else if(gameState == STATE.GAME){
 			spawner.tick();
+			handler.tick();
 			if(hud.tick()){
 				gameState = STATE.END;
 			}
+		}
+		else if(gameState == STATE.PAUSE){
+			hud.pauseTick();
 		}
 	}
 	
@@ -139,12 +142,20 @@ public class Game extends Canvas implements Runnable {
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
-		handler.render(g);
-		
 		if(gameState == STATE.MENU || gameState == STATE.INFO || gameState == STATE.EXTRA || gameState == STATE.END){
 			menu.render(g);
 		}
-		if(gameState == STATE.GAME) hud.render(g);	
+		if(gameState == STATE.GAME){
+			handler.render(g);
+			hud.render(g);		
+		}
+		if(gameState == STATE.PAUSE) hud.renderPause(g);
+		if(gameState == STATE.REVERSEHIDE){
+				handler.restore(g);
+				FPStrace = 1;
+				gameState = STATE.GAME;
+		}
+		
 		
 		g.dispose();
 		bs.show();
@@ -154,6 +165,14 @@ public class Game extends Canvas implements Runnable {
 		if(var >= max) return var = max;
 		else if(var <= min) return var = min;
 		else return var;
+	}
+	
+	public int getScore(){
+		return hud.getScore();
+	}
+	
+	public int getWave(){
+		return hud.getWave();
 	}
 	
 	public static void main(String args[]){

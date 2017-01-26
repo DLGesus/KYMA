@@ -19,6 +19,9 @@ public class BasicBullet extends GameObject{
 		
 		velX = (r.nextInt(7 - -7) + -7);
 		velY = 7;
+		
+		vel[0] = velX;
+		vel[1] = velY;
 	}
 	
 	public Rectangle getBounds(){
@@ -32,9 +35,22 @@ public class BasicBullet extends GameObject{
 		if(y >= Game.HEIGHT + 16) handler.removeObject(this);
 		handler.addObject(new Trail(x, y, ID.Trail, color, 16, 16, 0.06f, handler));
 	}
-
+	
 	public void render(Graphics g){
 		g.setColor(color);
 		g.fillRect((int)x, (int)y, 16, 16);
+	}
+
+	public void hide(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect((int)x, (int)y, 16, 16);
+		
+		velX = 0;
+		velY = 0;
+	}
+	
+	public void restoreVel(){
+		velX = vel[0];
+		velY = vel[1];
 	}
 }

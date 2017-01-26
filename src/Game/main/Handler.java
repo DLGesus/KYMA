@@ -6,6 +6,13 @@ import java.util.LinkedList;
 public class Handler {
 
 	LinkedList<GameObject> object = new LinkedList<GameObject>();
+	private static int countTimesDone = 1;
+	private void restorVel(){
+		for(int i = 0; i < object.size(); i++){
+			GameObject tempObject = object.get(i);
+			tempObject.restoreVel();
+		}
+	}
 	
 	public void tick(){
 		for(int i = 0; i < object.size(); i++){
@@ -21,6 +28,17 @@ public class Handler {
 			
 			tempObject.render(g);
 		}
+	}
+	
+	public void hide(Graphics g){
+		for(int i = 0; i < object.size(); i++){
+			GameObject tempObject = object.get(i);
+			tempObject.hide(g);
+		}
+	}
+	
+	public void restore(Graphics g){
+		restorVel();
 	}
 	
 	public void addObject(GameObject object){

@@ -46,7 +46,7 @@ public class Menu extends MouseAdapter{
 				Game.FPStrace = 1;
 				
 				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
-				handler.addObject(new BasicEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.red, handler));
+				handler.addObject(new BasicEnemy(Game.WIDTH / 2 + 40, Game.HEIGHT / 2 - 30, ID.Enemy, Color.red, handler));
 				
 				mouseDown[0] = false;
 				mouseDown[1] = true;
@@ -210,6 +210,27 @@ public class Menu extends MouseAdapter{
 			handler.clear();
 			
 			g.setColor(Color.WHITE);
+			
+			MU_SIZE = g.getFontMetrics(title);
+			
+			g.setFont(title);
+			g.drawString("END", Game.WIDTH/2 - MU_SIZE.stringWidth("END") / 2, Game.HEIGHT/7);
+			
+			try{
+				MU = MU.createFont(Font.TRUETYPE_FONT, new File("Justo St.ttf"));
+			}
+			catch(Exception e){}
+			
+			Font score = MU.deriveFont(Font.PLAIN, 30);
+			g.setFont(score);
+			
+			String tempStr = "Score: " + game.getScore();
+			
+			g.drawString(tempStr, Game.WIDTH / 7 , Game.HEIGHT * 2/7);
+			
+			tempStr = "Wave: " + game.getWave();
+			
+			g.drawString(tempStr, Game.WIDTH / 7, Game.HEIGHT * 3/7);
 			
 			MU_SIZE = g.getFontMetrics(mainMenu);
 			g.setFont(mainMenu);

@@ -26,6 +26,9 @@ public class Player extends GameObject{
 		x = Game.clamp(x, 0, Game.WIDTH - 46);
 		y = Game.clamp(y, 0, Game.HEIGHT - 68);
 		
+		vel[0] = velX;
+		vel[1] = velY;
+		
 		collision();
 	}
 	
@@ -46,5 +49,19 @@ public class Player extends GameObject{
 	public void render(Graphics g){
 		g.setColor(Color.white);          /*if(id == ID.Player)*/ 
 		g.fillRect((int)x, (int)y, 40, 40);
+	}
+
+	@Override
+	public void hide(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect((int)x, (int)y, 40, 40);
+		
+		velX = 0;
+		velY = 0;
+	}
+	
+	public void restoreVel(){
+		velX = vel[0];
+		velY = vel[1];
 	}
 }

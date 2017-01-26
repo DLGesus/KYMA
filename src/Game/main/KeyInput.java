@@ -3,18 +3,23 @@ package Game.main;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+import Game.main.Game.STATE;
+
 public class KeyInput extends KeyAdapter{
 	
+	private Game game;
 	private Handler handler;
 	private boolean[] keyDown = new boolean[4];
+	boolean keyed;
 	
-	public KeyInput(Handler handler){
+	public KeyInput(Game game, Handler handler){
 		this.handler = handler;
-		
+		this.game = game;
 		keyDown[0] = false;           // W KEY
 		keyDown[1] = false;           // S KEY
 		keyDown[2] = false;           // D KEY
 		keyDown[3] = false;           // A KEY
+		keyed = false;
 	}
 
 	public void keyPressed(KeyEvent e){
@@ -23,7 +28,7 @@ public class KeyInput extends KeyAdapter{
 		for(int i = 0; i < handler.object.size(); i++){
 			GameObject tempObject = handler.object.get(i);
 			
-			if(tempObject.getID() == ID.Player){                 //All Key Events For Player 1
+			if(tempObject.getID() == ID.Player && game.gameState == STATE.GAME){                 //All Key Events For Player 1
 				
 				if(key == KeyEvent.VK_W){ tempObject.setVelY(-6); keyDown[0] = true; }
 				if(key == KeyEvent.VK_S){ tempObject.setVelY(+6); keyDown[1] = true; }
@@ -32,6 +37,16 @@ public class KeyInput extends KeyAdapter{
 			}
 		}
 		if(key == KeyEvent.VK_ESCAPE) System.exit(1);
+		if(key == KeyEvent.VK_P && (game.gameState == STATE.GAME || game.gameState == STATE.PAUSE)){
+			if(keyed == false){
+				keyed = true;
+				game.gameState = STATE.PAUSE;
+			} else if(keyed == true){
+				keyed = false;
+				game.gameState = STATE.REVERSEHIDE;
+			}
+			
+		}
 	}
 	
 	public void keyReleased(KeyEvent e){

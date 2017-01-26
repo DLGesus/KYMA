@@ -14,7 +14,7 @@ public class Spawn {
 	private int looper;
 	
 	public Spawn(Handler handler, HUD hud){
-		this. handler = handler;
+		this.handler = handler;
 		this.hud = hud;
 	}
 	

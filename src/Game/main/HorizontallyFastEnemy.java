@@ -17,6 +17,9 @@ public class HorizontallyFastEnemy extends GameObject{
 		
 		velX = 10;
 		velY = 3;
+		
+		vel[0] = velX;
+		vel[1] = velY;
 	}
 	
 	public Rectangle getBounds(){
@@ -36,6 +39,19 @@ public class HorizontallyFastEnemy extends GameObject{
 	public void render(Graphics g){
 		g.setColor(color);
 		g.fillRect((int)x, (int)y, 16, 16);
+	}
+	
+	public void hide(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect((int)x, (int)y, 16, 16);
+		
+		velX = 0;
+		velY = 0;
+	}
+	
+	public void restoreVel(){
+		velX = vel[0];
+		velY = vel[1];
 	}
 
 	//handler.addObject(new HorizontallyFastEnemy(r.nextInt(Game.WIDTH - 20), r.nextInt(Game.HEIGHT - 42), ID.Enemy, Color.green, handler));

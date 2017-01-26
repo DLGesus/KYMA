@@ -11,16 +11,25 @@ public abstract class GameObject {
 	protected float velX;
 	protected float velY;
 	
+	protected float[] vel;
+	
 	protected ID id;
 	
 	public GameObject(float x, float y, ID id){    //CONSTRUCTOR (MAKER)
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		
+		vel = new float[2];
+		
+		vel[0] = 0;
+		vel[1] = 0;
 	}
 	
 	public abstract void tick();
 	public abstract void render(Graphics g);
+	public abstract void hide(Graphics g);
+	public abstract void restoreVel();
 	public abstract Rectangle getBounds();
 	
 	public void setX(float x){                   //MUTATOR (SETTER)
@@ -61,5 +70,12 @@ public abstract class GameObject {
 	
 	public float getVelY(){                      //ACCESSOR (GETTER)
 		return velY;
+	}
+	
+	public void print(){
+		if(id == ID.Enemy){
+			System.out.println("Real Time: " + velX + ", " + velY);
+			System.out.println("Stored: " + vel[0] + ", " + vel[1]);
+		}
 	}
 }

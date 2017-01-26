@@ -20,6 +20,9 @@ public class EnemyBoss1 extends GameObject{
 
 		velX = 0;
 		velY = 1;
+		
+		vel[0] = velX;
+		vel[1] = velY;
 	}
 	
 	public Rectangle getBounds(){
@@ -49,6 +52,10 @@ public class EnemyBoss1 extends GameObject{
 			
 		//if(y <= 0 || y >= Game.HEIGHT - 42) velY *= -1;
 		if(x <= 0 || x >= Game.WIDTH - 102) velX *= -1;
+		
+
+		vel[0] = velX;
+		vel[1] = velY;
 	}
 
 	public void render(Graphics g){
@@ -68,5 +75,21 @@ public class EnemyBoss1 extends GameObject{
 		g.fillRect((int)x + 35, (int)y + 74, 25, 40);
 	}
 
+	public void hide(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect((int)x, (int)y, 96, 96);
+		g.drawRect((int)x, (int)y, 96, 96);
+		g.fillRect((int)x + 32, (int)y + 74, 30, 40);
+		g.drawRect((int)x + 32, (int)y + 74, 30, 40);
+		g.fillRect((int)x + 35, (int)y + 74, 25, 40);
+		
+		velX = 0;
+		velY = 0;	
+	}
+	
+	public void restoreVel(){
+		velX = vel[0];
+		velY = vel[1];
+	}
 	//handler.addObject(new EnemyBoss1(Game.WIDTH / 2 + 38, -155, ID.Enemy, handler));
 }

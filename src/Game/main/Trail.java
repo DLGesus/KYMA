@@ -40,6 +40,11 @@ public class Trail extends GameObject{
 		g2d.setComposite(makeTransparent(1));
 	}
 	
+	public void hide(Graphics g) {
+		g.setColor(Color.BLACK);
+		g.fillRect((int)x, (int)y, width, height);
+	}
+	
 	private AlphaComposite makeTransparent(float alpha){
 		int type = AlphaComposite.SRC_OVER;
 		return AlphaComposite.getInstance(type, alpha);
@@ -47,6 +52,10 @@ public class Trail extends GameObject{
 
 	public Rectangle getBounds() {
 		return null;
+	}
+
+	@Override
+	public void restoreVel() {
 	}
 	
 }
