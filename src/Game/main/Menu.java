@@ -2,13 +2,11 @@ package Game.main;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontFormatException;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.util.Random;
 
 import Game.main.Game.STATE;
@@ -23,8 +21,7 @@ public class Menu extends MouseAdapter{
 	private FontMetrics MU_SIZE;
 	private Font title;
 	private Font mainMenu;
-	
-	private int counter = 0;
+		
 	
 	public Menu(Game game, Handler handler){
 		this.game = game;
@@ -44,6 +41,8 @@ public class Menu extends MouseAdapter{
 				game.gameState = STATE.GAME;
 				
 				Game.FPStrace = 1;
+				
+				//handler.clear(); // INSTA DEATH
 				
 				handler.addObject(new Player(Game.WIDTH/2-30, Game.HEIGHT/2-30, ID.Player, handler));
 				handler.addObject(new BasicEnemy(Game.WIDTH / 2 + 40, Game.HEIGHT / 2 - 30, ID.Enemy, Color.red, handler));
@@ -111,12 +110,7 @@ public class Menu extends MouseAdapter{
 	public void render(Graphics g){
 		if(game.gameState == STATE.MENU){
 			
-			while(counter == 0){
-				ParticleEffect particle = new ParticleEffect();
-				particle.ParticleEffect();	
-				counter = 1;
-			}
-			
+						
 			try{
 				MU = MU.createFont(Font.TRUETYPE_FONT, new File("Mestizos Unidos.otf"));
 			}

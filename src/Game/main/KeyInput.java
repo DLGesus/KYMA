@@ -11,14 +11,11 @@ public class KeyInput extends KeyAdapter{
 	private Handler handler;
 	private boolean[] keyDown = new boolean[4];
 	boolean keyed;
-	
 	public KeyInput(Game game, Handler handler){
+		
 		this.handler = handler;
 		this.game = game;
-		keyDown[0] = false;           // W KEY
-		keyDown[1] = false;           // S KEY
-		keyDown[2] = false;           // D KEY
-		keyDown[3] = false;           // A KEY
+		keyDown = memset(keyDown, 4, false);
 		keyed = false;
 	}
 
@@ -47,7 +44,10 @@ public class KeyInput extends KeyAdapter{
 			}
 			
 		}
+		
 	}
+	
+	public void set
 	
 	public void keyReleased(KeyEvent e){
 		int key = e.getKeyCode();
@@ -66,5 +66,12 @@ public class KeyInput extends KeyAdapter{
 				if(!keyDown[2] && !keyDown[3]) tempObject.setVelX(0);  //Horizontal Movement
 			}
 		}
+	}
+	
+	public static boolean [] memset(boolean[] b, int bSIZE, boolean value){
+		for(int i = 0; i < bSIZE; i++){
+			b[i] = value;
+		}
+		return b;
 	}
 }

@@ -9,7 +9,7 @@ public class Player extends GameObject{
 
 	Random r = new Random();
 	Handler handler;
-	
+	public static int HPLOSS = -2;
 	public Player(float x, float y, ID id, Handler handler){
 		super(x, y, id);
 		this.handler = handler;
@@ -40,7 +40,7 @@ public class Player extends GameObject{
 			if(tempObject.getID() == ID.Enemy){ //tempObject is now BasicEnemy
 				if(getBounds().intersects(tempObject.getBounds())){
 					 //Collision Code
-					HUD.HEALTH -= 2;
+					HUD.HEALTH += HPLOSS;
 				}
 			}
 		}

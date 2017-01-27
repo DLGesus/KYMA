@@ -25,6 +25,7 @@ public class Game extends Canvas implements Runnable {
 	private Spawn spawner;
 	
 	public Menu menu;
+	public ParticleEffect particle;
 	
 	public enum STATE{
 		MENU,
@@ -49,12 +50,14 @@ public class Game extends Canvas implements Runnable {
 		gameOver = false;
 		handler = new Handler();
 		menu = new Menu(this, handler);
+		particle = new ParticleEffect(this, handler);
+		this.addKeyListener(new KeyInput(this, handler));
+		this.addMouseListener(menu);
+
 		hud = new HUD(this, handler);
 		spawner = new Spawn(handler, hud);
 		r = new Random();
 		
-		this.addKeyListener(new KeyInput(this, handler));
-		this.addMouseListener(menu);
 	}
 
 	public synchronized void start(){
@@ -116,7 +119,10 @@ public class Game extends Canvas implements Runnable {
 			}
 		}
 		
-		if(gameState == STATE.MENU || gameState == STATE.END || gameState == STATE.PAUSE) menu.tick();
+		if(gameState == STATE.MENU || gameState == STATE.END || gameState == STATE.PAUSE) {
+			handler.tick();
+			menu.tick();
+		}
 		
 		else if(gameState == STATE.GAME){
 			spawner.tick();
@@ -143,7 +149,10 @@ public class Game extends Canvas implements Runnable {
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		
 		if(gameState == STATE.MENU || gameState == STATE.INFO || gameState == STATE.EXTRA || gameState == STATE.END){
+			handler.render(g);
 			menu.render(g);
+			particle.render(g);
+			
 		}
 		if(gameState == STATE.GAME){
 			handler.render(g);
